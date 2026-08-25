@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AML First Job — Practical Investigation Training</title>
+<style>
+  :root{
+    --ink:#0F1E33;
+    --navy:#12305C;
+    --steel:#365B8C;
+    --paper:#F5F2EC;
+    --paper2:#EDE8DE;
+    --line:#D8CFC0;
+    --amber:#B45309;
+    --teal:#0E5F5A;
+    --white:#FFFFFF;
+    --muted:#5C6673;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sans{font-family:'Helvetica Neue',Arial,sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* ── TOP BAR ── */
+  .topbar{background:var(--ink);color:var(--paper);padding:10px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center}
+  .topbar .dot{color:#C9A15A}
+
+  /* ── HERO ── */
+  .hero{background:var(--navy);color:var(--paper);padding:64px 0 56px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,#C9A15A 0 40px,transparent 40px 80px)}
+  .eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#C9A15A;margin-bottom:20px}
+  .hero h1{font-size:44px;line-height:1.15;font-weight:normal;margin-bottom:22px;max-width:760px}
+  .hero h1 em{font-style:italic;color:#EBD9B6}
+  .hero p.lead{font-size:20px;color:#CBD6E6;max-width:620px;margin-bottom:34px}
+  .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    display:inline-block;background:#C9A15A;color:#1A1204;
+    font-size:16px;font-weight:600;letter-spacing:.03em;
+    padding:16px 34px;border-radius:2px;text-decoration:none;
+    border:1px solid #C9A15A;transition:all .15s ease;
+  }
+  .btn:hover{background:#D8B673;border-color:#D8B673}
+  .btn-price{font-family:'Helvetica Neue',Arial,sans-serif;color:#EBD9B6;font-size:15px;letter-spacing:.04em}
+  .btn-price strong{color:var(--paper);font-size:17px}
+
+  /* ── CREDIBILITY STRIP ── */
+  .strip{background:var(--ink);color:var(--paper);padding:22px 0;border-top:1px solid #24406B}
+  .strip .wrap{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;text-align:center}
+  .strip .stat{font-family:'Helvetica Neue',Arial,sans-serif}
+  .strip .num{font-size:26px;color:#C9A15A;display:block;font-weight:600}
+  .strip .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9FB0C8}
+
+  /* ── SECTION ── */
+  section{padding:60px 0}
+  .kicker{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+  h2{font-size:32px;font-weight:normal;line-height:1.2;margin-bottom:20px;color:var(--ink)}
+  .prose{font-size:18px;max-width:680px}
+  .prose p{margin-bottom:18px}
+
+  /* ── PROBLEM ── */
+  .problem{background:var(--paper2)}
+  .problem .line{border-left:3px solid var(--amber);padding:6px 0 6px 22px;margin:26px 0;font-size:21px;font-style:italic;color:var(--navy);max-width:640px}
+
+  /* ── WHAT YOU GET ── */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+  .card{background:var(--paper);padding:28px 26px}
+  .card .n{font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.12em;color:var(--amber);margin-bottom:10px}
+  .card h3{font-size:20px;font-weight:normal;margin-bottom:8px;color:var(--navy)}
+  .card p{font-size:15.5px;color:var(--muted)}
+
+  /* ── CASE LADDER ── */
+  .ladder{background:var(--ink);color:var(--paper)}
+  .ladder h2{color:var(--paper)}
+  .ladder .kicker{color:#C9A15A}
+  .steps{margin-top:32px}
+  .step{display:flex;gap:22px;padding:20px 0;border-top:1px solid #24406B;align-items:baseline}
+  .step:first-child{border-top:none}
+  .step .lvl{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#C9A15A;width:130px;flex-shrink:0}
+  .step .desc{font-size:17px;color:#D3DCEA}
+  .step .desc b{color:var(--paper);font-weight:normal;font-style:italic}
+
+  /* ── TESTIMONIALS ── */
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:34px}
+  .quote{background:var(--white);border:1px solid var(--line);padding:26px 24px;position:relative}
+  .quote .mark{font-size:44px;color:var(--line);line-height:1;font-family:Georgia,serif;position:absolute;top:14px;right:18px}
+  .quote p{font-size:16.5px;font-style:italic;color:var(--ink);margin-bottom:18px;position:relative;z-index:1}
+  .quote .who{font-family:'Helvetica Neue',Arial,sans-serif}
+  .quote .who .nm{font-size:15px;font-weight:600;color:var(--navy)}
+  .quote .who .rl{font-size:13px;color:var(--muted);margin-top:2px}
+
+  /* ── WHO FOR ── */
+  .forwho{background:var(--paper2)}
+  .forwho ul{list-style:none;max-width:680px;margin-top:20px}
+  .forwho li{font-size:18px;padding:13px 0 13px 34px;border-bottom:1px solid var(--line);position:relative}
+  .forwho li:before{content:"→";position:absolute;left:0;color:var(--amber);font-family:'Helvetica Neue',Arial,sans-serif}
+
+  /* ── FOUNDER ── */
+  .founder .prose p{margin-bottom:16px}
+  .sig{font-size:22px;font-style:italic;color:var(--navy);margin-top:8px}
+
+  /* ── FINAL CTA ── */
+  .final{background:var(--navy);color:var(--paper);text-align:center}
+  .final h2{color:var(--paper);max-width:640px;margin:0 auto 18px}
+  .final p{font-size:19px;color:#CBD6E6;max-width:560px;margin:0 auto 30px}
+  .final .btn{font-size:18px;padding:18px 44px}
+  .final .guarantee{font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:#9FB0C8;margin-top:20px;letter-spacing:.03em}
+
+  /* ── FOOTER ── */
+  footer{background:var(--ink);color:#8496B0;padding:30px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;text-align:center;letter-spacing:.03em}
+
+  @media(max-width:720px){
+    .hero h1{font-size:32px}
+    .cards,.quotes{grid-template-columns:1fr}
+    .step{flex-direction:column;gap:4px}
+    .step .lvl{width:auto}
+    h2{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span>AML First Job</span>
+      <span><span class="dot">●</span> Practical Investigation Training</span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">For people breaking into financial crime</div>
+      <h1>You understand the theory. You have never <em>worked through a full investigation</em>. Hiring managers notice immediately.</h1>
+      <p class="lead">AML First Job gives you six realistic investigation cases, fiat and crypto, with personal written feedback from an analyst who has filed 550+ SARs.</p>
+      <div class="cta-row">
+        <a href="https://gireskana8.gumroad.com/l/ahhoj" class="btn">Get the full pack</a>
+        <span class="btn-price"><strong>€59.99</strong> one-time · instant download</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="wrap">
+      <div class="stat"><span class="num">6</span><span class="lbl">Case files</span></div>
+      <div class="stat"><span class="num">550+</span><span class="lbl">SARs filed</span></div>
+      <div class="stat"><span class="num">Fiat + Crypto</span><span class="lbl">Both covered</span></div>
+      <div class="stat"><span class="num">48h</span><span class="lbl">Personal feedback</span></div>
+    </div>
+  </div>
+
+  <section class="problem">
+    <div class="wrap">
+      <div class="kicker">The problem</div>
+      <h2>Studying AML and doing AML are two different things.</h2>
+      <div class="prose">
+        <p>You have done the courses. Maybe passed a certification. You can define structuring, layering, and enhanced due diligence.</p>
+        <p>Then an interviewer puts a messy transaction history in front of you and asks you to work through it out loud.</p>
+        <div class="line">And you freeze. Not because you do not know AML. Because you have never actually made a decision on a live investigation.</div>
+        <p>That gap is what costs people their first AML role. Nobody hands beginners realistic investigations to practise on before they are hired. This pack does.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">What you get</div>
+      <h2>Not a course. Practical investigation reps.</h2>
+      <div class="prose"><p>Everything is built from real compliance work across fiat and crypto environments, not adapted from textbooks.</p></div>
+      <div class="cards">
+        <div class="card">
+          <div class="n">01</div>
+          <h3>Six realistic case files</h3>
+          <p>Beginner to advanced. Two beginner, two intermediate, two advanced. Each covering fiat and crypto: bank transactions, blockchain activity, and on-chain tracing.</p>
+        </div>
+        <div class="card">
+          <div class="n">02</div>
+          <h3>A model answer for every case</h3>
+          <p>Full worked analysis showing how a senior analyst structures the investigation, so you can compare your reasoning against a professional standard.</p>
+        </div>
+        <div class="card">
+          <div class="n">03</div>
+          <h3>Personal written feedback</h3>
+          <p>Submit your work and get real feedback within 48 hours. Not automated. Not generic. From someone who has done the job.</p>
+        </div>
+        <div class="card">
+          <div class="n">04</div>
+          <h3>Theory and interview guides</h3>
+          <p>An essential theory reference covering the phases of laundering, typologies, sanctions and the analyst framework, plus an interview prep guide built around questions European compliance teams actually ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ladder">
+    <div class="wrap">
+      <div class="kicker">The progression</div>
+      <h2>You build from your first case to your hardest.</h2>
+      <div class="steps">
+        <div class="step"><div class="lvl">Beginner</div><div class="desc"><b>Account takeover and fraud.</b> Learn to read transaction patterns, device and IP intelligence, and basic on-chain movement.</div></div>
+        <div class="step"><div class="lvl">Intermediate</div><div class="desc"><b>Structuring and layering.</b> Connect activity across accounts and follow funds as they are broken up and moved.</div></div>
+        <div class="step"><div class="lvl">Advanced</div><div class="desc"><b>Crypto mixers and shell networks.</b> Trace obfuscated flows, cross-border structures and coordinated laundering operations.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">What people say</div>
+      <h2>Feedback from people who did the work.</h2>
+      <div class="quotes">
+        <div class="quote">
+          <span class="mark">”</span>
+          <p>This training stood out from others I have encountered. It not only tests your ability to spot red flags but also challenges you to present your analysis in a structured report format. Feedback on my work was quick, personalised and constructive.</p>
+          <div class="who"><div class="nm">India Gray</div><div class="rl">Financial Crime Systems Analyst</div></div>
+        </div>
+        <div class="quote">
+          <span class="mark">”</span>
+          <p>I am halfway through, up to the fourth intermediate crypto case. Absolutely incredible feedback from Gires. Learning so much. Very grateful for him developing AML First Job.</p>
+          <div class="who"><div class="nm">Lawrence P. Konicke</div><div class="rl">Former IRS Investigator</div></div>
+        </div>
+        <div class="quote">
+          <span class="mark">”</span>
+          <p>I finished the last advanced case today. I enjoyed it a lot from the first easy case to the last. This is a very awesome practice course for someone who really wants to try themselves as an AML analyst.</p>
+          <div class="who"><div class="nm">Iryna Khylyuk</div><div class="rl">Attorney-at-Law · CAMS · AML Compliance</div></div>
+        </div>
+        <div class="quote">
+          <span class="mark">”</span>
+          <p>It gave me the chance to apply my knowledge and investigative approach to a practical scenario. I thoroughly enjoyed working through the case and found it genuinely valuable for developing real skills.</p>
+          <div class="who"><div class="nm">Lavanya Shivanna</div><div class="rl">Aspiring Financial Crime Analyst</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="forwho">
+    <div class="wrap">
+      <div class="kicker">Who this is for</div>
+      <h2>Built for the person trying to get in.</h2>
+      <ul>
+        <li>You want your first AML or KYC job and need hands-on case practice</li>
+        <li>You are switching into compliance or financial crime from another field</li>
+        <li>You are a junior analyst sharpening your investigation skills</li>
+        <li>You want to move into crypto compliance and on-chain analysis</li>
+        <li>You have an interview coming up and need to think like an analyst, out loud, with confidence</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="founder">
+    <div class="wrap">
+      <div class="kicker">Who built it</div>
+      <h2>Made by someone who does the work.</h2>
+      <div class="prose">
+        <p>I am an AML and compliance professional with over three years of frontline experience investigating suspicious transactions across traditional banking and cryptocurrency. I have filed more than 550 Suspicious Activity Reports and traced illicit funds across Bitcoin, Ethereum, Solana and Tron.</p>
+        <p>I built AML First Job because I kept meeting talented people who understood the theory but had never been given a realistic case to practise on. This is the bridge I wish existed when I started.</p>
+        <p class="sig">— Gires Kana</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <div class="kicker" style="color:#C9A15A">Start now</div>
+      <h2>Stop reading about investigations. Start doing them.</h2>
+      <p>Six realistic cases. Personal feedback. Everything you need to walk into your first AML interview and think like an analyst.</p>
+      <a href="https://gireskana8.gumroad.com/l/ahhoj" class="btn">Get the full pack — €59.99</a>
+      <div class="guarantee">One-time payment · Instant PDF download · Feedback by email within 48 hours</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">AML First Job · Practical Investigation Training · gireskana1@gmail.com</div>
+  </footer>
+
+</body>
+</html>
