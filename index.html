@@ -76,6 +76,25 @@
   .final p{font-size:19px;color:#CBD6E6;max-width:560px;margin:0 auto 28px}
   footer{background:var(--ink);color:#8496B0;padding:28px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;text-align:center}
   @media(max-width:760px){.hero h1{font-size:31px}.ladder{grid-template-columns:1fr}h2{font-size:25px}.free-card{flex-direction:column;align-items:flex-start}}
+
+  .voices{background:var(--paper2)}
+  .voices-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:32px}
+  .voice{background:var(--white);border:1px solid var(--line);padding:24px 24px;position:relative}
+  .voice .mark{position:absolute;top:12px;right:18px;font-family:Georgia,serif;font-size:46px;color:var(--line);line-height:1}
+  .voice p{font-size:16px;font-style:italic;color:var(--ink);margin-bottom:16px;position:relative;z-index:1}
+  .voice .who{font-family:'Helvetica Neue',Arial,sans-serif}
+  .voice .who .nm{font-size:15px;font-weight:600;color:var(--navy)}
+  .voice .who .rl{font-size:13px;color:var(--muted);margin-top:2px}
+  @media(max-width:760px){.voices-grid{grid-template-columns:1fr}}
+
+  .founder-flex{display:flex;gap:36px;align-items:flex-start;margin-top:8px}
+  .founder-photo{flex-shrink:0;width:190px}
+  .founder-photo img{width:190px;height:190px;border-radius:50%;object-fit:cover;border:4px solid var(--gold)}
+  .founder-photo .cap{font-family:'Helvetica Neue',Arial,sans-serif;text-align:center;margin-top:12px}
+  .founder-photo .cap .nm{font-size:15px;font-weight:600;color:var(--navy)}
+  .founder-photo .cap .rl{font-size:12px;color:var(--muted);margin-top:2px}
+  .founder-text{flex:1}
+  @media(max-width:760px){.founder-flex{flex-direction:column;align-items:center;text-align:left}.founder-photo{width:150px}.founder-photo img{width:150px;height:150px}}
 </style>
 </head>
 <body>
@@ -180,13 +199,44 @@
     <p style="font-size:16px">All personal feedback across AML First Job is delivered in written form. For the Career Accelerator, each element is one round of submission and written feedback: one CV review, one LinkedIn review, feedback on up to two submitted case studies, and one written mock interview. Submissions should be made within 90 days of purchase, and feedback is returned within 5 to 7 working days per submission.</p>
   </div></section>
 
+  
+  <section class="voices"><div class="wrap">
+    <div class="kicker">What people say</div>
+    <h2>Feedback from people who did the work.</h2>
+    <div class="prose"><p>These are the words of people who worked through the material. Their experience is why the product is built the way it is.</p></div>
+    <div class="voices-grid">
+      <div class="voice"><span class="mark">”</span>
+        <p>This training stood out from others I have encountered. It not only tests your ability to spot red flags but also challenges you to present your analysis in a structured report format. The feedback on my work was quick, personalised and constructive.</p>
+        <div class="who"><div class="nm">India</div><div class="rl">Financial Crime Systems Analyst</div></div>
+      </div>
+      <div class="voice"><span class="mark">”</span>
+        <p>Absolutely incredible feedback. I am learning so much working through the cases, and each one builds on the last. Very grateful for this being developed.</p>
+        <div class="who"><div class="nm">Lawrence</div><div class="rl">Former IRS Investigator</div></div>
+      </div>
+      <div class="voice"><span class="mark">”</span>
+        <p>I finished the last advanced case today. I enjoyed it a lot, from the first easy case to the last. This is a very good practice course for someone who really wants to try themselves as an AML analyst.</p>
+        <div class="who"><div class="nm">Iryna</div><div class="rl">Attorney-at-Law, CAMS, AML Compliance</div></div>
+      </div>
+      <div class="voice"><span class="mark">”</span>
+        <p>It gave me the chance to apply my knowledge and investigative approach to a practical scenario. I thoroughly enjoyed working through the case and found it valuable for developing real skills.</p>
+        <div class="who"><div class="nm">Lavanya</div><div class="rl">AML and Financial Crime Analyst</div></div>
+      </div>
+    </div>
+  </div></section>
+
   <section class="founder"><div class="wrap">
     <div class="kicker">Who built it</div>
     <h2>Made by someone who does the work.</h2>
-    <div class="prose">
+    <div class="founder-flex">
+      <div class="founder-photo">
+        <img src="gires_photo.jpg" alt="Gires Kana, founder of AML First Job">
+        <div class="cap"><div class="nm">Gires Kana</div><div class="rl">Founder, AML First Job</div></div>
+      </div>
+      <div class="founder-text prose">
       <p>I am an AML and compliance professional with frontline experience investigating suspicious transactions across traditional banking and cryptocurrency. I have filed more than 550 Suspicious Activity Reports and traced illicit funds across Bitcoin, Ethereum, Solana and Tron.</p>
       <p>I built AML First Job because talented people kept telling me the same thing: they understood the theory but had never been given a real case to practise on, and they froze in interviews as a result. This is the bridge I wish had existed when I started.</p>
       <p class="sig">— Gires Kana</p>
+      </div>
     </div>
   </div></section>
 
