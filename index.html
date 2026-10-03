@@ -193,8 +193,8 @@ section{padding-block:96px}
 /* Founder */
 .founder .wrap{display:grid;grid-template-columns:320px 1fr;gap:64px;align-items:center}
 .portrait{position:relative}
-.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;filter:saturate(.95)}
-.portrait:after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--gold);border-radius:4px;z-index:-1}
+.portrait img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;border-radius:4px;filter:saturate(.95)}
+.portrait:after{content:"";position:absolute;inset:-10px;border:1px solid var(--gold);border-radius:8px;z-index:-1}
 .portrait{isolation:isolate}
 .founder p{margin-bottom:16px;color:var(--ink-2);max-width:62ch}
 .creds{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 24px}
