@@ -100,6 +100,10 @@ section{padding-block:96px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .hero-proof{margin-top:30px;display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:14px;color:#AFBDD2}
 .hero-proof b{color:#fff;font-weight:600}
+a.hero-proof{text-decoration:none}
+.hero-proof u{color:var(--gold);text-decoration-color:rgba(201,161,90,.5);text-underline-offset:4px}
+a.hero-proof:hover u{text-decoration-color:var(--gold)}
+.ba-pdf{display:inline-block;margin-top:18px;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px}
 .hero-proof .pip{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 0 4px rgba(201,161,90,.2)}
 
 /* Case file mock */
@@ -278,7 +282,7 @@ footer a{color:#fff;text-decoration:none}
         <a href="#free" class="btn btn-gold">Start with the free case <span class="arrow">→</span></a>
         <a href="#tiers" class="btn btn-line">See the four paths</a>
       </div>
-      <div class="hero-proof"><span class="pip"></span><span>Used in Financial Crimes teaching at the <b>University of Alabama at Birmingham</b></span></div>
+      <a class="hero-proof" href="#classroom"><span class="pip"></span><span>Used in Financial Crimes teaching at the <b>University of Alabama at Birmingham</b>. <u>See the classroom results</u> <span class="arrow">&darr;</span></span></a>
     </div>
 
     <div class="casefile" aria-hidden="true">
@@ -436,7 +440,7 @@ footer a{color:#fff;text-decoration:none}
       </div>
     </div>
 
-    <div class="classroom">
+    <div class="classroom" id="classroom">
       <div class="label dark">In the classroom</div>
       <h3>UAB students worked Case 001. Here is what changed.</h3>
       <div class="ba">
@@ -448,6 +452,7 @@ footer a{color:#fff;text-decoration:none}
         <div class="ba-item"><p>&ldquo;This shouldn't be a bonus assignment, but rather a required assignment.&rdquo;</p></div>
       </div>
       <div class="ba-src">Students, Financial Crimes (CJ 454/554), University of Alabama at Birmingham. From an anonymous survey shared by the instructor.</div>
+      <a class="ba-pdf" href="AML-First-Job-UAB-Case-Study.pdf" target="_blank" rel="noopener">Read the one-page classroom case study (PDF) <span class="arrow">&rarr;</span></a>
     </div>
 
     <div class="vgrid">
